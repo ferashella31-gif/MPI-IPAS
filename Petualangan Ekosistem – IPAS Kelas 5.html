@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petualangan Ekosistem – IPAS Kelas 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#d9f0ff;--bg2:#b5e0fb;--card:#ffffff;--ink:#0b3558;--blue:#1e88e5;--blue2:#0d5fb3;--soft:#e6f4ff;--ok:#1e9e5a;--okbg:#dff7e9;--no:#d9482b;--nobg:#ffe9e2;--sun:#ffc83d;--shadow:#0d5fb3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a2442;--bg2:#0f3560;--card:#12365c;--ink:#e8f4ff;--blue:#4aa8ff;--blue2:#7cc0ff;--soft:#184a7a;--ok:#5fe0a0;--okbg:#124a37;--no:#ff9a80;--nobg:#4f2a22;--shadow:#06182e}}
+:root[data-theme="dark"]{--bg:#0a2442;--bg2:#0f3560;--card:#12365c;--ink:#e8f4ff;--blue:#4aa8ff;--blue2:#7cc0ff;--soft:#184a7a;--ok:#5fe0a0;--okbg:#124a37;--no:#ff9a80;--nobg:#4f2a22;--shadow:#06182e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",sans-serif;font-weight:500;font-size:18px;line-height:1.45;color:var(--ink);background:linear-gradient(var(--bg),var(--bg2));overflow-x:hidden}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sky span{position:absolute;font-size:56px;opacity:.85;animation:drift linear infinite}
+@keyframes drift{from{transform:translateX(-120px)}to{transform:translateX(110vw)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:14px 14px 90px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.bar{flex:1;height:16px;background:var(--card);border-radius:20px;border:3px solid var(--blue);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--blue),var(--blue) 10px,var(--blue2) 10px,var(--blue2) 20px);transition:width .5s}
+.top b{font-size:15px;white-space:nowrap}
+.card{background:var(--card);border:4px solid var(--blue);border-radius:28px;padding:22px;box-shadow:0 8px 0 var(--shadow);animation:pop .45s both}
+h1,h2,h3{margin:0 0 8px;line-height:1.15;font-weight:800;color:var(--blue2)}
+h1{font-size:clamp(32px,8vw,50px)}h2{font-size:clamp(26px,6vw,34px)}h3{font-size:22px}
+p{margin:6px 0}
+.hero{text-align:center}
+.big{font-size:84px;animation:bob 2.4s ease-in-out infinite;display:inline-block}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.btn{font:inherit;font-weight:800;font-size:19px;color:#fff;background:var(--blue);border:0;border-radius:40px;padding:10px 26px;box-shadow:0 5px 0 var(--blue2);cursor:pointer;transition:transform .12s,box-shadow .12s;min-height:48px}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--blue2)}
+.btn.alt{background:var(--card);color:var(--blue2);border:3px solid var(--blue);box-shadow:0 5px 0 var(--blue)}
+:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+input{font:inherit;font-size:19px;padding:10px 16px;border-radius:30px;border:3px solid var(--blue);width:min(100%,320px);text-align:center;background:var(--soft);color:var(--ink)}
+.id{background:var(--soft);border-radius:18px;padding:10px 14px;margin:14px auto;max-width:420px;text-align:left}
+.goal{display:flex;gap:12px;align-items:center;background:var(--soft);border-radius:20px;padding:12px 16px;margin:10px 0}
+.goal span{font-size:38px;flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tab{font:inherit;font-weight:700;font-size:16px;border:3px solid var(--blue);background:var(--card);color:var(--blue2);border-radius:30px;padding:6px 14px;cursor:pointer;min-height:44px}
+.tab[aria-selected=true]{background:var(--blue);color:#fff}
+.panel{background:var(--soft);border-radius:22px;padding:16px;animation:pop .35s both}
+.panel .ic{font-size:44px;letter-spacing:6px}
+.tip{background:var(--sun);color:#3a2b00;border-radius:16px;padding:8px 14px;margin-top:10px;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+@media (max-width:480px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-weight:700;font-size:17px;padding:10px;border-radius:18px;border:3px solid var(--blue);background:var(--card);color:var(--ink);cursor:pointer;min-height:48px}
+.opt:hover{background:var(--soft)}
+.opt.good{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--nobg);border-color:var(--no);animation:shake .4s}
+.scene{font-size:56px;text-align:center;animation:bob 2.6s ease-in-out infinite}
+.q{font-size:22px;font-weight:700;text-align:center;margin:6px 0 4px}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tf .opt{font-size:24px;padding:16px 8px}
+.fb{margin-top:14px;border-radius:20px;padding:12px 16px;font-weight:700;animation:pop .35s both}
+.fb.good{background:var(--okbg);color:var(--ok);border:3px solid var(--ok)}
+.fb.bad{background:var(--nobg);color:var(--no);border:3px solid var(--no)}
+.fb p{color:var(--ink);font-weight:500}
+.stars{font-size:44px;letter-spacing:4px}
+.stars s{text-decoration:none;display:inline-block;animation:pop .5s both}
+.score{font-size:60px;font-weight:800;color:var(--blue2);line-height:1}
+.moods .opt{font-size:34px;padding:6px 14px}
+.mini{font-size:15px;opacity:.8}
+.conf{position:fixed;top:-40px;font-size:30px;z-index:5;pointer-events:none;animation:fall 2.8s ease-in forwards}
+.hide{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><span style="top:6%;animation-duration:60s">☁️</span><span style="top:18%;animation-duration:85s;animation-delay:-30s">☁️</span><span style="top:60%;animation-duration:70s;animation-delay:-10s">🦋</span></div>
+<div class="wrap">
+ <div class="top"><b id="stepName">Mulai</b><div class="bar" role="progressbar" aria-label="Kemajuan belajar"><i id="prog"></i></div></div>
+ <main id="app"></main>
+</div>
+<script>
+var S=0,name="",quizI=0,score=0,answered=false,actI=0,actScore=0,mood="";
+var steps=["Mulai","Tujuan","Materi","Aktivitas","Kuis","Refleksi"];
+var materi=[
+{t:"🌳 Komponen",ic:"🐛🌿🪨💧",h:"Dua kelompok komponen ekosistem",p:"Komponen biotik adalah makhluk hidup, seperti hewan, tumbuhan, dan jamur. Komponen abiotik adalah benda tak hidup, seperti air, tanah, udara, dan cahaya matahari.",k:"Ekosistem = biotik + abiotik yang saling berhubungan!"},
+{t:"🌱 Biotik ↔ Abiotik",ic:"☀️🌻💧",h:"Makhluk hidup dan benda tak hidup",p:"Bunga matahari butuh cahaya, air, dan tanah untuk tumbuh. Cacing tanah menggemburkan tanah. Keduanya saling memengaruhi.",k:"Contoh: ikan bernapas dengan oksigen di air."},
+{t:"🦅 Predasi",ic:"🦅➡️🐍",h:"Pemangsa dan mangsa",p:"Predasi terjadi ketika satu hewan (pemangsa) memakan hewan lain (mangsa). Interaksi ini membentuk rantai makanan.",k:"Contoh: elang memangsa ular, kucing memangsa tikus."},
+{t:"⚔️ Kompetisi",ic:"🐔🐔🌾",h:"Berebut sumber daya",p:"Kompetisi terjadi ketika makhluk hidup berebut hal yang sama, seperti makanan, air, cahaya, atau tempat tinggal.",k:"Contoh: dua pohon berebut cahaya matahari."},
+{t:"🤝 Simbiosis",ic:"🐝🌸 🐱🪲 🌳🌿",h:"Hidup berdampingan",p:"Mutualisme: kedua pihak untung (lebah dan bunga). Komensalisme: satu untung, yang lain tidak terpengaruh (anggrek menempel di pohon). Parasitisme: satu untung, yang lain rugi (kutu dan kucing).",k:"Ingat: untung–untung, untung–biasa, untung–rugi!"}
+];
+var acts=[
+{e:"🐱🐭",s:"Kucing mengejar dan memakan tikus.",a:"Predasi",w:"Satu hewan memakan hewan lain, itu predasi."},
+{e:"🐝🌼",s:"Lebah mengisap nektar dan membantu penyerbukan bunga.",a:"Mutualisme",w:"Lebah dapat makanan, bunga terbantu berbuah. Keduanya untung."},
+{e:"🐕🪲",s:"Kutu mengisap darah anjing sehingga anjing gatal dan lemas.",a:"Parasitisme",w:"Kutu untung, anjing rugi."},
+{e:"🌳🌳☀️",s:"Dua pohon saling berebut cahaya matahari.",a:"Kompetisi",w:"Mereka berebut sumber daya yang sama."},
+{e:"🌿🌧️",s:"Rumput tumbuh subur setelah hujan turun.",a:"Biotik–Abiotik",w:"Tumbuhan (biotik) memanfaatkan air hujan (abiotik)."},
+{e:"🌺🌴",s:"Anggrek menempel di batang pohon tanpa merugikan pohonnya.",a:"Komensalisme",w:"Anggrek untung, pohon tidak terpengaruh."}
+];
+var aopts=["Predasi","Kompetisi","Mutualisme","Parasitisme","Komensalisme","Biotik–Abiotik"];
+var quiz=[
+{e:"☀️💧🪨",s:"Matahari, air, dan tanah termasuk komponen abiotik.",a:true,w:"Benar sekali! Semuanya benda tak hidup."},
+{e:"🦅🐍",s:"Elang memangsa ular adalah contoh predasi.",a:true,w:"Elang (pemangsa) memakan ular (mangsa)."},
+{e:"🦋🌺",s:"Kupu-kupu mengisap nektar dan membantu penyerbukan bunga. Ini mutualisme.",a:true,w:"Keduanya sama-sama untung."},
+{e:"🐱🪲",s:"Kutu yang mengisap darah kucing adalah mutualisme.",a:false,w:"Salah. Kutu untung tetapi kucing rugi. Itu parasitisme."},
+{e:"🐔🐔🌾",s:"Dua ayam berebut makanan yang sama adalah kompetisi.",a:true,w:"Berebut sumber daya yang sama disebut kompetisi."},
+{e:"🌱🌑",s:"Tumbuhan tidak membutuhkan cahaya matahari untuk hidup.",a:false,w:"Salah. Tumbuhan butuh cahaya matahari untuk membuat makanannya."},
+{e:"🌺🌳",s:"Anggrek menempel di pohon tanpa merugikan pohon itu adalah komensalisme.",a:true,w:"Satu untung, yang lain tidak terpengaruh."},
+{e:"🐛🦎🐸",s:"Interaksi antar makhluk hidup disebut interaksi biotik–abiotik.",a:false,w:"Salah. Interaksi antar makhluk hidup adalah biotik–biotik. Biotik–abiotik itu antara makhluk hidup dan benda tak hidup."},
+{e:"🪱🟤",s:"Cacing tanah menggemburkan tanah. Ini interaksi makhluk hidup dengan benda tak hidup.",a:true,w:"Cacing (biotik) memengaruhi tanah (abiotik)."},
+{e:"🪲🐈",s:"Pada parasitisme, kedua makhluk hidup sama-sama untung.",a:false,w:"Salah. Pada parasitisme satu untung dan yang lain rugi."}
+];
+var $=function(id){return document.getElementById(id)};
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function go(n){S=n;render();window.scrollTo({top:0,behavior:"smooth"})}
+function bar(){$("prog").style.width=(S/5*100)+"%";$("stepName").textContent=steps[S]}
+function render(){bar();var a=$("app");
+ if(S==0)a.innerHTML='<section class="card hero"><div class="big" aria-hidden="true">🌍</div><h1>Petualangan Ekosistem!</h1><p>Ayo kenali siapa saja yang saling berinteraksi di alam sekitar kita! 🌿🐝🦅💧</p><div class="id"><b>Mata pelajaran:</b> IPAS<br><b>Kelas:</b> 5 SD<br><b>Topik:</b> Interaksi antar komponen ekosistem</div><p>Siapa namamu, Petualang?</p><input id="nm" placeholder="Tulis namamu" maxlength="24" aria-label="Nama kamu"><div class="row"><button class="btn" onclick="start()">Mulai petualangan 🚀</button></div></section>';
+ if(S==1)a.innerHTML='<section class="card"><h2>Hai '+esc(name||"Petualang")+'! Tujuan kita hari ini 🎯</h2><div class="goal"><span>🔎</span><div><b>Tujuan pembelajaran</b><br>Kamu dapat mengidentifikasi jenis interaksi antar komponen dalam ekosistem.</div></div><div class="goal"><span>🧩</span><div>Kamu akan belajar membedakan <b>predasi, kompetisi, simbiosis,</b> dan interaksi <b>biotik–abiotik</b>.</div></div><div class="goal"><span>⭐</span><div>Selesaikan aktivitas dan kuis untuk meraih bintang!</div></div><div class="row"><button class="btn alt" onclick="go(0)">Kembali</button><button class="btn" onclick="go(2)">Siap belajar! 📖</button></div></section>';
+ if(S==2){var t="";materi.forEach(function(m,i){t+='<button class="tab" role="tab" aria-selected="'+(i==0)+'" onclick="tab('+i+')">'+m.t+'</button>'});
+  a.innerHTML='<section class="card"><h2>Materi singkat 📚</h2><p class="mini">Ketuk tiap tombol untuk membuka isinya.</p><div class="tabs" role="tablist">'+t+'</div><div id="pn"></div><div class="row"><button class="btn alt" onclick="go(1)">Kembali</button><button class="btn" onclick="actI=0;actScore=0;go(3)">Coba aktivitas! 🎮</button></div></section>';tab(0)}
+ if(S==3)act();
+ if(S==4)ask();
+ if(S==5)finish();
+}
+function start(){name=$("nm").value.trim();go(1)}
+function tab(i){var m=materi[i],ts=document.querySelectorAll(".tab");ts.forEach(function(b,j){b.setAttribute("aria-selected",j==i)});
+ $("pn").innerHTML='<div class="panel"><div class="ic scene" aria-hidden="true">'+m.ic+'</div><h3>'+m.h+'</h3><p>'+m.p+'</p><div class="tip">💡 '+m.k+'</div></div>'}
+function act(){var x=acts[actI],o="";aopts.forEach(function(v,i){o+='<button class="opt" onclick="pick('+i+',this)">'+v+'</button>'});
+ $("app").innerHTML='<section class="card"><h2>Aktivitas: Tebak interaksinya! 🕵️</h2><p class="mini">Cerita '+(actI+1)+' dari '+acts.length+'</p><div class="scene" aria-hidden="true">'+x.e+'</div><div class="q">'+x.s+'</div><p style="text-align:center">Jenis interaksi apakah ini?</p><div class="opts">'+o+'</div><div id="afb"></div></section>'}
+function pick(i,b){if(answered)return;var x=acts[actI];
+ if(aopts[i]==x.a){answered=true;actScore++;b.classList.add("good");$("afb").innerHTML='<div class="fb good">🎉 Hebat! Kamu benar!<p>'+x.w+'</p></div>';nextAct()}
+ else{b.classList.add("bad");b.disabled=true;$("afb").innerHTML='<div class="fb bad">Ups, belum tepat. Coba pilih lagi ya! 💪</div>'}}
+function nextAct(){var last=actI==acts.length-1;$("afb").insertAdjacentHTML("beforeend",'<div class="row"><button class="btn" onclick="answered=false;'+(last?'go(4);quizI=0;score=0;ask()':'actI++;act()')+'">'+(last?'Mulai kuis! 🏆':'Cerita berikutnya ➡️')+'</button></div>')}
+function ask(){answered=false;var x=quiz[quizI];
+ $("app").innerHTML='<section class="card"><h2>Kuis: Benar atau Salah? 🧠</h2><p class="mini">Soal '+(quizI+1)+' dari 10</p><div class="scene" aria-hidden="true">'+x.e+'</div><div class="q">“'+x.s+'”</div><div class="tf"><button class="opt" onclick="ans(true,this)">✅ Benar</button><button class="opt" onclick="ans(false,this)">❌ Salah</button></div><div id="qfb"></div></section>'}
+function ans(v,b){if(answered)return;answered=true;var x=quiz[quizI],ok=v===x.a,last=quizI==9;
+ document.querySelectorAll(".tf .opt").forEach(function(e){e.disabled=true});b.classList.add(ok?"good":"bad");
+ var praise=["Hebat sekali! 🌟","Keren, kamu pintar! 🎉","Mantap, jawabanmu tepat! 👏","Luar biasa, Petualang! 🚀"][quizI%4];
+ if(ok){score++;confetti(10)}
+ $("qfb").innerHTML=(ok?'<div class="fb good">'+praise+'<p>'+x.w+'</p></div>':'<div class="fb bad">Belum tepat, tidak apa-apa! 🌈<p>'+x.w+'</p></div>')+'<div class="row"><button class="btn" onclick="'+(last?'go(5)':'quizI++;ask()')+'">'+(last?'Lihat hasilku 🎁':'Soal berikutnya ➡️')+'</button></div>'}
+function confetti(n){var c=["⭐","💧","🌟","🦋","🌿"];for(var i=0;i<n;i++){var d=document.createElement("div");d.className="conf";d.textContent=c[i%5];d.style.left=Math.random()*95+"%";d.style.animationDelay=Math.random()*.6+"s";document.body.appendChild(d);setTimeout(function(e){e.remove()},3600,d)}}
+function finish(){var st=score>=9?3:score>=7?2:score>=5?1:0,s="";for(var i=0;i<3;i++)s+='<s style="animation-delay:'+(i*.25)+'s">'+(i<st?"⭐":"☆")+'</s>';
+ var msg=score>=8?"Kamu ahli ekosistem! Terus jelajahi alam sekitarmu ya.":score>=5?"Bagus! Baca materi sekali lagi supaya makin jago.":"Jangan menyerah! Yuk, ulangi materi dan coba lagi.";
+ if(st>1)confetti(30);
+ $("app").innerHTML='<section class="card hero"><div class="big" aria-hidden="true">🏆</div><h2>Selamat, '+esc(name||"Petualang")+'!</h2><div class="score">'+score+' / 10</div><div class="stars" aria-label="'+st+' bintang">'+s+'</div><p>'+msg+'</p><p class="mini">Aktivitas tebak interaksi: '+actScore+' dari 6 benar pada percobaan pertama.</p><hr style="border:2px dashed var(--blue);margin:16px 0"><h3>Yuk, refleksi 💭</h3><p>Bagaimana perasaanmu belajar hari ini?</p><div class="row moods">'+["😄","🙂","😐","😕"].map(function(m){return '<button class="opt" aria-label="Perasaan '+m+'" onclick="setMood(this)">'+m+'</button>'}).join("")+'</div><div class="goal" style="text-align:left"><span>🤔</span><div>Pikirkan: <b>interaksi apa yang paling sering kamu lihat di sekitar rumahmu?</b> Ceritakan kepada guru atau temanmu!</div></div><div class="goal" style="text-align:left"><span>🌍</span><div>Bagian mana yang masih membingungkan? Tanyakan kepada gurumu ya.</div></div><div id="mf"></div><div class="row"><button class="btn alt" onclick="go(2)">Baca materi lagi</button><button class="btn" onclick="S=0;name=\'\';go(0)">Main lagi 🔄</button></div></section>'}
+function setMood(b){document.querySelectorAll(".moods .opt").forEach(function(e){e.classList.remove("good")});b.classList.add("good");var t={"😄":"Senangnya! Terus semangat belajar!","🙂":"Bagus! Besok kita belajar lebih seru lagi.","😐":"Tidak apa-apa. Belajar pelan-pelan juga hebat.","😕":"Terima kasih sudah jujur. Guru siap membantumu!"};$("mf").innerHTML='<div class="fb good">'+t[b.textContent]+'</div>'}
+render();
+</script>
+</body>
+</html>
